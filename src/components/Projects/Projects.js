@@ -21,7 +21,7 @@ function Projects() {
           My Recent <strong className="purple">Works </strong>
         </h1>
         <p style={{ color: "white" }}>
-          Here are a few projects I've worked on recently.
+          Here are a few projects I've worked on recently.Some Demo links are not working. Sorry for that i will fixed it as soon as possible.Thanks.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           {/* <Col md={4} className="project-card">
@@ -93,7 +93,7 @@ function Projects() {
               title="Restraunt Website"
               description="This is my Restraunt website, created using HTML, CSS, JavaScript, Tailwind CSS, and Firebase."
               ghLink="https://github.com/Jamsheed-Khan/Restraunt-website"
-              demoLink="https://fastidious-muffin-860c58.netlify.app"
+              demoLink="https://restraunt-website-rho.vercel.app/login/login.html"
             />
           </Col>
           <Col md={4} className="project-card">
@@ -103,7 +103,7 @@ function Projects() {
               title="Weather App"
               description="This is a weather app. It has a responsive layout which looks beautifully on all devices, from mobiles to desktops."
               ghLink="https://github.com/Jamsheed-Khan/Weather-App"
-              demoLink="jamsheed-khan.github.io/Weather-App/"
+              demoLink="https://jamsheed-khan.github.io/Weather-App/"
             />
           </Col>
           <Col md={4} className="project-card">
@@ -113,7 +113,7 @@ function Projects() {
               title="ToDo App "
               description="This is a mobile repairing website which contain all e-commerce features and it is made using react js and antd. You can fix and buy repaired products on the website."
               ghLink="https://github.com/Jamsheed-Khan/Get-your-todo"
-              demoLink="jamsheed-khan.github.io/Get-your-todo/"
+              demoLink="https://jamsheed-khan.github.io/Get-your-todo/"
             />
           </Col>
 
