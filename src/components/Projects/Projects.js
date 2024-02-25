@@ -80,7 +80,7 @@ function Projects() {
             <ProjectCard
               imgPath={quiz}
               isBlog={false}
-              title="Restrauent"
+              title="Quiz App"
               description="Quiz app is very helpful for schools and students. It helps them to develop their skills and knowledge through quizzes. This app provides a way for students to take exams, improve their abilities and skills."
               ghLink="https://github.com/Jamsheed-Khan/Quiz-App"
               demoLink="jamsheed-khan.github.io/Quiz-App/"
