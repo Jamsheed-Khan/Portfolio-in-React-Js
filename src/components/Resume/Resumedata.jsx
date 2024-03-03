@@ -7,7 +7,7 @@ function Resumedata() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            <span className="purple">MERN Instructor</span>{" "}
+            <span className="purple">MERN stuck DEveloper</span>{" "}
             <span>Empowered students at Saylani Mass IT Training with comprehensive MERN stack knowledge, fostering proficient backend developers through hands-on projects and personalized guidance.</span>
             <br />
             <br />
@@ -24,18 +24,18 @@ function Resumedata() {
             <span>Participated in a 12-hour Hackathon at SMIT, which taught me how to work on a competitive task under time constraints and pressure.</span>
             <br />
             <br />
-            <span className="purple">Internship Experience</span>{" "}
+            {/* <span className="purple">Internship Experience</span>{" "}
             <span>
             Completed an internship at Coderatory, during my internship, I honed my skills in Node.js, mastering complex programming challenges with a calm approach.
             </span>
             <br />
-            <br />
-            <span className="purple">Internship Experience</span>{" "}
+            <br /> */}
+            {/* <span className="purple">Internship Experience</span>{" "}
             <span>
             Completed an internship at Digitalogies, where I learned about the roadmap of Front End Development and how to effectively work in the market.
             </span>
             <br />
-            <br />
+            <br /> */}
 
           </p>
         </blockquote>

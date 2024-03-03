@@ -2,15 +2,15 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import sunshine from "../../Assets/Projects/sunshine.png";
-import quiz from "../../Assets/Projects/quiz.png";
-import textutils from "../../Assets/Projects/textutils.png";
-import portfolio from "../../Assets/Projects/portfolio.png";
-import tkh from "../../Assets/Projects/tkh.png";
-import noon from "../../Assets/Projects/noon.png";
-import dietes from "../../Assets/Projects/dietes.png";
-import fumicon from "../../Assets/Projects/fumicon.png";
-import lms from "../../Assets/Projects/LMS-portal.png";
+import quizzz from "../../Assets/Projects/quizzz.png";
+// import quiz from "../../Assets/Projects/quiz.png";
+import todoss from "../../Assets/Projects/todoss.png";
+import weatherr from "../../Assets/Projects/weatherr.png";
+import restruantapp from "../../Assets/Projects/restruantapp.png";
+// import noon from "../../Assets/Projects/noon.png";
+// import dietes from "../../Assets/Projects/dietes.png";
+// import fumicon from "../../Assets/Projects/fumicon.png";
+// import lms from "../../Assets/Projects/LMS-portal.png";
 
 function Projects() {
   return (
@@ -78,7 +78,7 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={quiz}
+              imgPath={quizzz}
               isBlog={false}
               title="Quiz App"
               description="Quiz app is very helpful for schools and students. It helps them to develop their skills and knowledge through quizzes. This app provides a way for students to take exams, improve their abilities and skills."
@@ -88,7 +88,7 @@ function Projects() {
           </Col>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={portfolio}
+              imgPath={restruantapp}
               isBlog={false}
               title="Restraunt Website"
               description="This is my Restraunt website, created using HTML, CSS, JavaScript, Tailwind CSS, and Firebase."
@@ -98,7 +98,7 @@ function Projects() {
           </Col>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={noon}
+              imgPath={weatherr}
               isBlog={false}
               title="Weather App"
               description="This is a weather app. It has a responsive layout which looks beautifully on all devices, from mobiles to desktops."
@@ -108,12 +108,12 @@ function Projects() {
           </Col>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={tkh}
+              imgPath={todoss}
               isBlog={false}
               title="ToDo App "
               description="This is a mobile repairing website which contain all e-commerce features and it is made using react js and antd. You can fix and buy repaired products on the website."
               ghLink="https://github.com/Jamsheed-Khan/Get-your-todo"
-              demoLink="https://jamsheed-khan.github.io/Get-your-todo/"
+              demoLink="get-your-todo.vercel.app/"
             />
           </Col>
 
