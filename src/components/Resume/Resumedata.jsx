@@ -7,7 +7,7 @@ function Resumedata() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            <span className="purple">MERN stuck DEveloper</span>{" "}
+            <span className="purple">MERN Stack Developer</span>{" "}
             <span>Empowered students at Saylani Mass IT Training with comprehensive MERN stack knowledge, fostering proficient backend developers through hands-on projects and personalized guidance.</span>
             <br />
             <br />
