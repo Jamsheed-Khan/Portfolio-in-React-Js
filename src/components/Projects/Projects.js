@@ -21,7 +21,9 @@ function Projects() {
           My Recent <strong className="purple">Works </strong>
         </h1>
         <p style={{ color: "white" }}>
-          Here are a few projects I've worked on recently.Some Demo links are not working. Sorry for that i will fixed it as soon as possible.Thanks.
+          Here are a few projects I've worked on recently.Some Demo links are
+          not working. Sorry for that i will fixed it as soon as
+          possible.Thanks.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           {/* <Col md={4} className="project-card">
@@ -111,14 +113,11 @@ function Projects() {
               imgPath={todoss}
               isBlog={false}
               title="ToDo App "
-              description="This is a mobile repairing website which contain all e-commerce features and it is made using react js and antd. You can fix and buy repaired products on the website."
+              description="This is a TodoApp in which you can add your daily tasks and works you have to do with crud opration ."
               ghLink="https://github.com/Jamsheed-Khan/Get-your-todo"
               demoLink="get-your-todo.vercel.app/"
             />
           </Col>
-
-
-
         </Row>
       </Container>
     </Container>
