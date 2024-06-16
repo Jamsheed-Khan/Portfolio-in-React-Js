@@ -92,8 +92,8 @@ function Projects() {
               isBlog={false}
               title="Restraunt Website"
               description="This is my Restraunt website, created using HTML, CSS, JavaScript, Tailwind CSS, and Firebase."
-              ghLink="https://github.com/Jamsheed-Khan/Restraunt-website"
-              demoLink="https://restraunt-website-rho.vercel.app/login/login.html"
+              ghLink="https://github.com/Jamsheed-Khan/Restruant-app-in-js"
+              demoLink="https://jams-restruant-app.vercel.app"
             />
           </Col>
           <Col md={4} className="project-card">
