@@ -10,6 +10,7 @@ import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
+  AiOutlineVideoCamera,
 } from "react-icons/ai";
 
 import { AiOutlineMessage } from "react-icons/ai";
@@ -103,10 +104,10 @@ function NavBar() {
             <Nav.Item>
               <Nav.Link
                 as={Link}
-                to="/userinfopage"
+                to="/videos"
                 onClick={() => updateExpanded(false)}
               >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> userinfopage
+                <AiOutlineVideoCamera style={{ marginBottom: "2px" }} /> videos
               </Nav.Link>
             </Nav.Item>
 
