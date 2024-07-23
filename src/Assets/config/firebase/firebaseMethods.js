@@ -16,9 +16,10 @@ import {
     doc,
     updateDoc,
   } from "firebase/firestore";
+  import { getStorage } from 'firebase/storage';
   
   const auth = getAuth(app);
-  
+  const storage = getStorage(app);
   //initialize firestore database
   const db = getFirestore(app);
   
@@ -139,4 +140,4 @@ import {
   }
   
   
-  export { auth, db, signUpUser, loginUser, signOutUser, sendData, getData, getAllData, deleteDocument, updateDocument };
+  export { auth, db, signUpUser, loginUser, signOutUser, sendData, getData, getAllData, deleteDocument, updateDocument,storage };

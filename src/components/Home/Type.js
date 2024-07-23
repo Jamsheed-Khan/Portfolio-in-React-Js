@@ -9,6 +9,8 @@ function Type() {
           "Deep Learning Engineer",
           "MERN Stack Developer",
           "Mobile Application Developer",
+          "Front-end Developer",
+          "Video Editor",
         ],
         autoStart: true,
         loop: true,
