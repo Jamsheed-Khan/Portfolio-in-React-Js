@@ -21,7 +21,6 @@ import {
   FaTrash,
   FaSignOutAlt,
   FaUpload,
-  FaGoogle,
 } from "react-icons/fa";
 import {
   signInWithPopup,
@@ -36,9 +35,15 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  getDoc,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { db, auth, storage } from "../../Assets/config/firebase/firebaseMethods";
+import {
+  db,
+  auth,
+  storage,
+} from "../../Assets/config/firebase/firebaseMethods";
+import { useNavigate } from 'react-router-dom';
 
 const UserInfo = () => {
   const [users, setUsers] = useState([]);
@@ -66,6 +71,7 @@ const UserInfo = () => {
       } else {
         setCurrentUser(null);
         setIsLoggedIn(false);
+        
       }
     });
 
@@ -87,6 +93,7 @@ const UserInfo = () => {
   const signOutUser = async () => {
     try {
       await signOut(auth);
+      
     } catch (error) {
       console.error("Error signing out:", error);
       setAlertMessage("Failed to sign out. Please try again.");
@@ -120,14 +127,14 @@ const UserInfo = () => {
       fetchUsers();
       fetchVideos();
     }
+   
   }, [isLoggedIn, currentUser]);
 
   const handleReplyChange = (event) => {
     setReplyMessage(event.target.value);
   };
 
-  const handleReply = async (event) => {
-    event.preventDefault();
+  const handleReply = async () => {
     if (selectedUser && replyMessage) {
       try {
         await addDoc(collection(db, "Replies"), {
@@ -162,9 +169,10 @@ const UserInfo = () => {
       title: "Email",
       dataIndex: "email",
       key: "email",
-      render: (text) => (
+      render: (text, record) => (
         <span>
-          <FaEnvelope /> {text}
+          <FaEnvelope />
+          {text}
         </span>
       ),
     },
@@ -172,9 +180,10 @@ const UserInfo = () => {
       title: "Name",
       dataIndex: "name",
       key: "name",
-      render: (text) => (
+      render: (text, record) => (
         <span>
-          <FaUser /> {text}
+          <FaUser />
+          {text}
         </span>
       ),
     },
@@ -182,9 +191,10 @@ const UserInfo = () => {
       title: "Message",
       dataIndex: "message",
       key: "message",
-      render: (text) => (
+      render: (text, record) => (
         <span>
-          <FaComment /> {text}
+          <FaComment />
+          {text}
         </span>
       ),
     },
@@ -206,6 +216,7 @@ const UserInfo = () => {
     setVideoFile(null);
     setVideoThumbnail(null);
   };
+
 
   const handleVideoTitleChange = (e) => {
     setVideoTitle(e.target.value);
@@ -250,6 +261,7 @@ const UserInfo = () => {
           async () => {
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
 
+            // Upload thumbnail to storage
             const thumbnailRef = ref(
               storage,
               `thumbnails/${currentUser.email}/${videoThumbnail.name}`
@@ -261,7 +273,9 @@ const UserInfo = () => {
 
             thumbnailUploadTask.on(
               "state_changed",
-              (snapshot) => {},
+              (snapshot) => {
+                // Handle thumbnail upload progress (optional)
+              },
               (error) => {
                 console.error("Error uploading thumbnail:", error);
                 setAlertMessage(
@@ -276,6 +290,7 @@ const UserInfo = () => {
                   thumbnailUploadTask.snapshot.ref
                 );
 
+                // Store video data in Firestore
                 await addDoc(collection(db, "Videos"), {
                   title: videoTitle,
                   description: videoDescription,
@@ -340,165 +355,163 @@ const UserInfo = () => {
   };
 
   return (
-    <div className="container mt-5">
-      {showAlert && (
-        <Alert
-          variant={alertVariant}
-          onClose={() => setShowAlert(false)}
-          dismissible
-        >
-          {alertMessage}
-        </Alert>
-      )}
+    <div className="container">
       {isLoggedIn ? (
         currentUser.email === "jamshedkh365@gmail.com" ? (
           <>
-            <div className="d-flex justify-content-between align-items-center  mb-4" style={{marginTop:100}}>
-              <h1 className="text-white">Admin Dashboard</h1>
-              <Button variant="secondary" onClick={signOutUser}>
-                <FaSignOutAlt /> Sign Out
-              </Button>
-            </div>
-            <Table striped bordered hover responsive variant="dark">
-              <thead>
-                <tr>
-                  <th>User ID</th>
-                  <th>Email</th>
-                  <th>Name</th>
-                  <th>Message</th>
-                  <th>Reply</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user) => (
-                  <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>
-                      <FaEnvelope /> {user.email}
-                    </td>
-                    <td>
-                      <FaUser /> {user.name}
-                    </td>
-                    <td>
-                      <FaComment /> {user.message}
-                    </td>
-                    <td>
-                      <Button
-                        variant="primary"
-                        onClick={() => setSelectedUser(user)}
-                      >
-                        <FaReply /> Reply
-                      </Button>
-                    </td>
+            <div className="d-flex justify-content-center  vh-70 row " style={{marginTop:100}}>
+              <h1 className="text-white justify-content-center mb-4  text-center">
+                User Information
+              </h1>
+              <Table striped bordered hover responsive className="w-100 text-white">
+                <thead>
+                  <tr>
+                    {columns.map((column) => (
+                      <th key={column.key}>{column.title}</th>
+                    ))}
                   </tr>
-                ))}
-              </tbody>
-            </Table>
-            {selectedUser && (
-              <Form onSubmit={handleReply} className="mt-4">
-                <Form.Group as={Row} controlId="replyMessage">
-                  <Form.Label column sm={2}>
-                    Reply to {selectedUser.email}:
-                  </Form.Label>
-                  <Col sm={10}>
-                    <InputGroup>
-                      <FormControl
-                        as="textarea"
-                        value={replyMessage}
-                        onChange={handleReplyChange}
-                        required
-                      />
-                      <InputGroup.Append>
-                        <Button variant="success" type="submit">
-                          <FaReply /> Send Reply
-                        </Button>
-                      </InputGroup.Append>
-                    </InputGroup>
-                  </Col>
-                </Form.Group>
-              </Form>
-            )}
-            <div className="d-flex justify-content-between align-items-center  mb-4">
-              <h2 className="text-white">Manage Videos</h2>
-              <Button
-                variant="primary"
-                onClick={() => setShowUploadModal(true)}
-              >
-                <FaUpload /> Upload New Video
-              </Button>
+                </thead>
+                <tbody>
+                  {users.map((user) => (
+                    <tr key={user.id}>
+                      {columns.map((column) => (
+                        <td key={column.key} className="text-white">
+                          {column.render
+                            ? column.render(user[column.dataIndex], user)
+                            : user[column.dataIndex]}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
             </div>
+
+            {showAlert && (
+              <Alert
+                variant={alertVariant}
+                onClose={() => setShowAlert(false)}
+                dismissible
+              >
+                {alertMessage}
+              </Alert>
+            )}
+
+            {selectedUser && (
+              <Row className="mt-3 text-white">
+                <Col md={6} className="mx-auto">
+                  <Form onSubmit={handleReply}>
+                    <Form.Group className="mb-3" controlId="replyMessage">
+                      <Form.Label>Reply Message</Form.Label>
+                      <InputGroup>
+                        <FormControl
+                          as="textarea"
+                          rows={4}
+                          value={replyMessage}
+                          onChange={handleReplyChange}
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                      Send Reply
+                    </Button>
+                  </Form>
+                </Col>
+              </Row>
+            )}
+
+            <Button className="m-2" variant="primary" onClick={() => setShowUploadModal(true)}>
+            <FaUpload /> Upload Video
+            </Button>
+            <Button variant="primary" onClick={signOutUser} link='/videos'>
+            <FaSignOutAlt /> Sign Out
+            </Button>
+
             <Modal show={showUploadModal} onHide={handleUploadModalClose}>
               <Modal.Header closeButton>
-                <Modal.Title>Upload New Video</Modal.Title>
+                <Modal.Title>Upload Video</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <Form>
-                  <Form.Group controlId="videoTitle">
+                  <Form.Group className="mb-3" controlId="videoTitle">
                     <Form.Label>Video Title</Form.Label>
-                    <Form.Control
+                    <FormControl
                       type="text"
                       value={videoTitle}
                       onChange={handleVideoTitleChange}
-                      required
                     />
                   </Form.Group>
-                  <Form.Group controlId="videoDescription" className="mt-3">
+
+                  <Form.Group className="mb-3" controlId="videoDescription">
                     <Form.Label>Video Description</Form.Label>
-                    <Form.Control
+                    <FormControl
                       as="textarea"
+                      rows={3}
                       value={videoDescription}
                       onChange={handleVideoDescriptionChange}
-                      required
                     />
                   </Form.Group>
-                  <Form.Group controlId="videoFile" className="mt-3">
+
+                  <Form.Group className="mb-3" controlId="videoFile">
                     <Form.Label>Video File</Form.Label>
-                    <Form.Control
+                    <FormControl
                       type="file"
                       accept="video/*"
                       onChange={handleVideoFileChange}
-                      required
                     />
                   </Form.Group>
-                  <Form.Group controlId="videoThumbnail" className="mt-3">
+
+                  <Form.Group className="mb-3" controlId="videoThumbnail">
                     <Form.Label>Video Thumbnail</Form.Label>
-                    <Form.Control
+                    <FormControl
                       type="file"
                       accept="image/*"
                       onChange={handleVideoThumbnailChange}
-                      required
                     />
                   </Form.Group>
                 </Form>
               </Modal.Body>
               <Modal.Footer>
+                <Button variant="secondary" onClick={handleUploadModalClose}>
+                  Close
+                </Button>
                 {isUploading ? (
-                  <Spinner animation="border" variant="primary" />
+                  <Button variant="primary" disabled>
+                    <Spinner animation="border" size="sm" /> Uploading...
+                    {uploadProgress > 0 && (
+                      <span> {uploadProgress.toFixed(0)}%</span>
+                    )}
+                  </Button>
                 ) : (
-                  <>
-                    <Button variant="secondary" onClick={handleUploadModalClose}>
-                      Close
-                    </Button>
-                    <Button variant="primary" onClick={handleUploadVideo}>
-                      Upload Video
-                    </Button>
-                  </>
+                  <Button variant="primary" onClick={handleUploadVideo}>
+                    Upload
+                  </Button>
                 )}
               </Modal.Footer>
             </Modal>
-            <div className="row ">
+
+            <h2 className="text-white">Uploaded Videos</h2>
+            <div className="row">
               {videos.map((video) => (
-                <div key={video.id} className="col-md-4 mb-4">
+                <div
+                  key={video.id}
+                  className="col-md-4 mb-3"
+                  style={{ maxWidth: "300px" }}
+                >
                   <div className="card project-card-view">
                     <iframe
-                    style={{height:350}}
+                      width="100%"
+                      height="200"
                       src={video.videoURL}
-                      className="card-img-top"
-                      alt={video.title}
+                      title={video.title}
+                      frameborder="0"
+                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
                     />
-                    <div className="card-body ">
+                    <div className="card-body">
                       <h5 className="card-title">{video.title}</h5>
                       <p className="card-text">{video.description}</p>
+
                       <div className="d-flex justify-content-between">
                         <Button
                           variant="primary"
@@ -511,7 +524,10 @@ const UserInfo = () => {
                               "Enter new video description:",
                               video.description
                             );
-                            if (updatedTitle && updatedDescription) {
+                            if (
+                              updatedTitle !== null &&
+                              updatedDescription !== null
+                            ) {
                               handleEditVideo(
                                 video.id,
                                 updatedTitle,
@@ -522,6 +538,7 @@ const UserInfo = () => {
                         >
                           <FaEdit /> Edit
                         </Button>
+
                         <Button
                           variant="primary"
                           onClick={() => handleDeleteVideo(video.id)}
@@ -536,17 +553,20 @@ const UserInfo = () => {
             </div>
           </>
         ) : (
-          <div className="text-center mt-5 text-white">
-            <Alert variant="danger">
-              You do not have permission to view this page.
+          <div className="d-flex  justify-content-center align-items-center vh-100 row">
+            <Alert variant="warning">
+              You are not authorized to access this page.Only Jamhsheed khan can
+              access this page.
             </Alert>
+            <Button className="" variant="danger" onClick={signOutUser}>
+              Sign Out
+            </Button>
           </div>
         )
       ) : (
-        <div className="text-center mt-5">
-          <h2 className="text-white mb-4">Please sign in to continue</h2>
+        <div className="d-flex justify-content-center align-items-center vh-100">
           <Button variant="primary" onClick={signInWithGoogle}>
-            <FaGoogle /> Sign in with Google
+            Sign In with Google
           </Button>
         </div>
       )}

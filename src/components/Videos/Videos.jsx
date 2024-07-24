@@ -41,7 +41,7 @@ const Videos = () => {
       <Row className=''>
         {videos.map((video, index) => (
           <Col key={index} xs={12} sm={6} md={4} lg={4}>
-            <Card className="mb-3 project-card-view">
+            <Card className="mb-4  project-card-view"  style={{marginBottom:100,}}>
               <Card.Body className=''>
                 <Card.Title>{video.title}</Card.Title>
                 <Card.Text>{video.description}</Card.Text>
@@ -51,7 +51,7 @@ const Videos = () => {
                   src={video.videoURL}
                   frameborder="0"
                   allowfullscreen
-                  allow="autoplay; encrypted-media"
+                  allow=" encrypted-media"
                 />
               </Card.Body>
               <Card.Footer>
