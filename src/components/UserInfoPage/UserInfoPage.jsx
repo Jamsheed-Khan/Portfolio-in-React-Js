@@ -491,7 +491,7 @@ const UserInfo = () => {
             </Modal>
 
             <h2 className="text-white">Uploaded Videos</h2>
-            <div className="row">
+            <div className="row justify-content-center">
               {videos.map((video) => (
                 <div
                   key={video.id}
