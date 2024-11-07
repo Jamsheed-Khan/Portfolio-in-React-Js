@@ -6,6 +6,8 @@ import quizzz from "../../Assets/Projects/quizzz.jpeg";
 import todoss from "../../Assets/Projects/todoss.jpeg";
 import weatherr from "../../Assets/Projects/weatherr.jpeg";
 import restruantapp from "../../Assets/Projects/restruantapp.jpeg";
+import portfoliofor from "../../Assets/Projects/portfoliofor.PNG"
+import blogweb from "../../Assets/Projects/blogweb.PNG"
 
 
 function Projects() {
@@ -18,19 +20,39 @@ function Projects() {
         </h1>
         <p style={{ color: "white" }}>
           Here are a few projects I've worked on recently. <p style={{ color: "red" }}>Todo app Demo links is
-          not working. Sorry for that i will fixed it as soon as
-          possible.Thanks.</p>
+            not working. Sorry for that i will fixed it as soon as
+            possible.Thanks.</p>
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
 
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={blogweb}
+              isBlog={false}
+              title="Blogging website"
+              description="
+Blogging Website is a modern React-based platform for sharing and exploring creative content. It allows users to write, edit, and publish blogs with images, leveraging Firebase for real-time functionality. The site features a responsive design, vibrant UI, and seamless user experience for bloggers and readers."
+              demoLink="https://blogging-website-brown.vercel.app/"
+            />
+          </Col>
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={quizzz}
               isBlog={false}
               title="Quiz App"
               description="Quiz app is very helpful for schools and students. It helps them to develop their skills and knowledge through quizzes. This app provides a way for students to take exams, improve their abilities and skills."
-              ghLink="https://github.com/Jamsheed-Khan/Quiz-App"
+              ghLink="https://github.com/Jamsheed-Khan/Shaha-Iskamic-Centre"
               demoLink="https://jamsheed-khan.github.io/Quiz-App/"
+            />
+          </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={portfoliofor}
+              isBlog={false}
+              title="Masjidtayyaba website"
+              description="Shaha Islamic Center is a React-based web application designed to provide accurate and timely prayer schedules for Muslims. It features a user-friendly interface, dynamic prayer time updates, and a responsive design for all devices. The platform also includes themed aesthetics inspired by Islamic culture."
+              ghLink="https://github.com/Jamsheed-Khan/Quiz-App"
+              demoLink="https://jamiamasjidtayyaba.vercel.app/"
             />
           </Col>
           <Col md={4} className="project-card">
