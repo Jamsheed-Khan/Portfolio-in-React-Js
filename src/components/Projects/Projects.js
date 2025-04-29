@@ -8,6 +8,7 @@ import weatherr from "../../Assets/Projects/weatherr.jpeg";
 import restruantapp from "../../Assets/Projects/restruantapp.jpeg";
 import portfoliofor from "../../Assets/Projects/portfoliofor.PNG"
 import blogweb from "../../Assets/Projects/blogweb.PNG"
+import jamsfrag from "../../Assets/Projects/jamsfrag.PNG"
 
 
 function Projects() {
@@ -27,6 +28,17 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
+              imgPath={jamsfrag}
+              isBlog={false}
+              title="Jams Fragrences"
+              description="
+Blogging Website is a modern React-based platform for sharing and exploring creative content. It allows users to write, edit, and publish blogs with images, leveraging Firebase for real-time functionality. The site features a responsive design, vibrant UI, and seamless user experience for bloggers and readers."
+              ghLink="https://github.com/Jamsheed-Khan/jamsfragrances"
+              demoLink="https://jamsfragrances.vercel.app"
+            />
+          </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
               imgPath={blogweb}
               isBlog={false}
               title="Blogging website"
@@ -41,8 +53,8 @@ Blogging Website is a modern React-based platform for sharing and exploring crea
               isBlog={false}
               title="Quiz App"
               description="Quiz app is very helpful for schools and students. It helps them to develop their skills and knowledge through quizzes. This app provides a way for students to take exams, improve their abilities and skills."
-              ghLink="https://github.com/Jamsheed-Khan/Shaha-Iskamic-Centre"
-              demoLink="https://jamsheed-khan.github.io/Quiz-App/"
+              ghLink="https://jamsheed-khan.github.io/Quiz-App/"
+              demoLink="https://github.com/Jamsheed-Khan/Quiz-App"
             />
           </Col>
           <Col md={4} className="project-card">
@@ -51,7 +63,7 @@ Blogging Website is a modern React-based platform for sharing and exploring crea
               isBlog={false}
               title="Masjidtayyaba website"
               description="Shaha Islamic Center is a React-based web application designed to provide accurate and timely prayer schedules for Muslims. It features a user-friendly interface, dynamic prayer time updates, and a responsive design for all devices. The platform also includes themed aesthetics inspired by Islamic culture."
-              ghLink="https://github.com/Jamsheed-Khan/Quiz-App"
+              ghLink="https://github.com/Jamsheed-Khan/Shaha-Iskamic-Centre"
               demoLink="https://jamiamasjidtayyaba.vercel.app/"
             />
           </Col>
