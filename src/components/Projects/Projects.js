@@ -28,11 +28,10 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={jamsfrag}
+              imgPath={jamsfrag1}
               isBlog={false}
               title="Jams Fragrences"
-              description="
-Blogging Website is a modern React-based platform for sharing and exploring creative content. It allows users to write, edit, and publish blogs with images, leveraging Firebase for real-time functionality. The site features a responsive design, vibrant UI, and seamless user experience for bloggers and readers."
+              description="JamsFragrances is a sleek, responsive e-commerce website designed for showcasing and selling premium perfumes. Built with React.js and powered by Firebase for real-time data handling and authentication, the platform offers a smooth and secure shopping experience. Users can explore a wide range of fragrances, add products to their cart, create accounts, and complete purchases seamlessly."
               ghLink="https://github.com/Jamsheed-Khan/jamsfragrances"
               demoLink="https://jamsfragrances.vercel.app"
             />
