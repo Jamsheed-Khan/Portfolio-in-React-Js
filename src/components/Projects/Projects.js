@@ -28,7 +28,7 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={jamsfrag1}
+              imgPath={jamsfrag}
               isBlog={false}
               title="Jams Fragrences"
               description="JamsFragrances is a sleek, responsive e-commerce website designed for showcasing and selling premium perfumes. Built with React.js and powered by Firebase for real-time data handling and authentication, the platform offers a smooth and secure shopping experience. Users can explore a wide range of fragrances, add products to their cart, create accounts, and complete purchases seamlessly."
